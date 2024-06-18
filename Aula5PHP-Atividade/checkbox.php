@@ -52,14 +52,15 @@
     <div class="banner">
         <h1>Hiperflex</h1>
     </div>
-    <h2>Exercício Com Checkbox 2 </h2>
+    <h2>Exercício 2 Utilizando Checkbox (Exibir qual foi as opções marcadas:)  </h2>
     <br>
-    <a class="px" href="checkbox4.php"> Proxímo Exercício </a>
+    <a class="px" href="radiobutton2.php"> Proxímo Exercício </a>
     <br><br>
+    
     <div class="checkbox">
         <label for="">Categória e Filtros de Genêros Com Checkbox</label>
         <div class="genero">
-            <form action="#" method="get">
+            <form action="#" method="post">
                 <br>
                 <div>
                     <input type="checkbox" name="text[]" id="acao" value="Ação">
@@ -102,8 +103,8 @@
     </div>
         <br>
     <?php
-    if (!empty($_GET['text'])) {
-        $generos = $_GET['text'];
+    if (!empty($_POST['text'])) {
+        $generos = $_POST['text'];
         echo 'Você escolheu os Gêneros: ' . implode(', ', $generos);
         echo '<br>';
         $conexao = new PDO('mysql:host=localhost;dbname=bd_filmes', 'root', ''); 

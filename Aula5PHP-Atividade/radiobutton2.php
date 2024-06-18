@@ -16,7 +16,7 @@
             justify-content: end;
         }
 
-        .checkbox {
+        .radio {
             border-radius: 2px;
             border: 2px solid black;
             padding: 2px 6px;
@@ -42,6 +42,7 @@
             justify-content: center;
             color: antiquewhite;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -56,6 +57,7 @@
         th {
             background-color: lightgray;
         }
+
     </style>
 </head>
 
@@ -63,46 +65,46 @@
     <div class="banner">
         <h1>Hiperflex</h1>
     </div>
-    <h2>Exercício 4 Utilizando Checkbox (Deve trazer em formato de _TABELA_ os resultados referente as escolhas do usuário) </h2>
+    <h2>Exercício 3 Com Radio-Button (Deve trazer em formato de _TABELA_ o resultado referente a escolha do usuário  ) </h2>
     <br>
-    <a class="px" href="desafio5.php"> Proxímo Exercício </a>
+    <a class="px" href="checkbox4.php"> Proxímo Exercício </a>
     <br><br>
-    
-    <div class="checkbox">
-        <label for="">Categória e Filtros de Genêros Com Checkbox</label>
+
+    <div class="radio">
+        <label for="">Categória e Filtros de Genêros Com Radio-button</label>
         <div class="genero">
             <form action="#" method="post">
                 <br>
                 <div>
-                    <input type="checkbox" name="text[]" id="acao" value="Ação">
+                    <input type="radio" name="text" id="acao" value="Ação">
                     <label for="acao">Ação</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="biografia" value="Biografia">
+                    <input type="radio" name="text" id="biografia" value="Biografia">
                     <label for="biografia">Biografia</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="aventura" value="Aventura">
+                    <input type="radio" name="text" id="aventura" value="Aventura">
                     <label for="aventura">Aventura</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="crime" value="Crime">
+                    <input type="radio" name="text" id="crime" value="Crime">
                     <label for="crime">Crime</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="drama" value="Drama">
+                    <input type="radio" name="text" id="drama" value="Drama">
                     <label for="drama">Drama</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="romance" value="Romance">
+                    <input type="radio" name="text" id="romance" value="Romance">
                     <label for="romance">Romance</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="fantasia" value="Fantasia">
+                    <input type="radio" name="text" id="fantasia" value="Fantasia">
                     <label for="fantasia">Fantasia</label>
                 </div>
                 <div>
-                    <input type="checkbox" name="text[]" id="scifi" value="Ficção científica">
+                    <input type="radio" name="text" id="scifi" value="Ficção científica">
                     <label for="scifi">Ficção científica</label>
                 </div>
                 <br>
@@ -114,20 +116,13 @@
     </div>
         <br>
     <?php
-    if (!empty($_POST['text'])) {  // Verifica se o parâmetro 'text' não está vazio no array $_POST (indica que o formulário foi submetido com uma opção selecionada)
-        $generos = $_POST['text']; // Armazena o valor do parâmetro 'text' (o gênero selecionado) na variável $generos
-        echo 'Você escolheu os Gêneros: ' . implode(', ', $generos); // Exibe o gênero selecionado ao usuário
+    if (!empty($_POST['text'])) {
+        $genero = $_POST['text'];
+        echo 'Você escolheu o Gênero: ' . implode(', ', $genero);
         echo '<br>';
-        $conexao = new PDO('mysql:host=localhost;dbname=bd_filmes', 'root', ''); // Cria uma nova conexão PDO com o banco de dados
-
-        $posicao = str_repeat('?,', count($generos) - 1) . '?'; // Cria posicao para uma consulta SQL preparada. 
-        // Por exemplo, se houver 3 gêneros, ele criará uma string "?, ?, ?".
-        $query = "SELECT * FROM tb_filme WHERE genero IN ($posicao)"; // Prepara a consulta SQL para selecionar todos os filmes onde o gênero está na lista de gêneros fornecida
-        $preparo = $conexao->prepare($query);
-        $preparo->execute($generos); // Executa a consulta preparada, passando os gêneros como parâmetros
-        $resultado = $preparo->fetchAll(); // Busca todos os resultados da consulta e os armazena na vareavel $resultado
+        $conexao = new PDO('mysql:host=localhost;dbname=bd_filmes', 'root', '');
+        $resultado = $stmt->fetchAll();
        echo '<br>';
-       // Exibe os resultados ao usuário, mostrando o nome e o gênero de cada filme
        if (!empty($resultado)) {
         echo '<table>';
         echo '<tr><th>Nome</th><th>Gênero</th></tr>';

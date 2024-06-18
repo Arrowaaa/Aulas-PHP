@@ -18,7 +18,7 @@
         justify-content: end;
     }
 
-    .radios {
+    .radio {
         border-radius: 2px;
         border: 2px solid black;
         padding: 2px 6px;
@@ -54,15 +54,15 @@
     <div class="banner">
         <h1>Hiperflex</h1>
     </div>
-    <h2>Exercício Com Radio-Button 1</h2>
+    <h2>Exercício 1 Utilizando Radio-Button (Deve exibir qual foi a opção marcada:)</h2>
     
     <a class="px" href="checkbox.php"> Proxímo Exercício </a>
     <br><br>
 
-    <div class="radios">
+    <div class="radio">
         <label for="">Categória e Filtros de Genêros</label>
         <div class="genero">
-            <form action="#" method="get">
+            <form action="#" method="post">
                 <br>
                 <div>
                     <input type="radio" name="text" id="acao" value="Ação">
@@ -107,8 +107,8 @@
         <?php
 
 
-        if (!empty($_GET['text'])) {
-            $genero = $_GET['text'];
+        if (!empty($_POST['text'])) {
+            $genero = $_POST['text'];
             echo 'Você escolheu o Gênero: ' . $genero;
            
         }
