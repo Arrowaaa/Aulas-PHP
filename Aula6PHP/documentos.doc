@@ -1,0 +1,46 @@
+<?php 
+
+var_dump($_POST); 
+// exibe dados enviados via método POST do um formulário HTML e verificação dos dados recebidos.
+o exibindo, o tipo e a quantidade.
+exempro: array(4) { ["nome"]=> string(5) "Arrow" ["usuario"]=> string(5) "arrow" ["senha"]=> string(3) "123" ["confirma"]=> string(3) "123" }
+
+try { // Try é tentar executar se ocorrer uma exceção, ela será capturada pelo bloco `catch`.
+
+    $user = $_POST['usuario']; 
+    $password = $_POST['senha']; 
+
+    //As variáveis `$user` e `$password` recebe os valores atribuidos dos campos de formulário `usuario` e `senha`.
+
+    
+    $conn = new PDO("mysql:host=localhost;dbname=db_login","root","");    
+    // Conexão com a mysql, com a extensão da linguagem PHP para acesso a banco de dados
+    //que especifica o host do MySQL (`localhost`) e o nome do banco de dados (`db_login`).
+    Usuário: `"root"`, o nome de usuário do banco de dados.
+    Senha: `""`, a senha do banco de dados (neste caso, está vazia).
+
+    $script = 'INSERT INTO tb_usuario (usuario, senha) VALUE (:usuario, :senha)';    
+    //Insere um novo registro na tabela `tb_usuario` com os valores
+    de `usuario` e `senha`. 
+    e serão substituídos pelos valores reais.
+
+    $preparo = $conn -> prepare($script); 
+    // Prepara a execução..
+    `prepare` retorna um objeto de declaração preparado, que pode ser executado com valores específicos.
+
+    $var = [  
+        ':usuario' => $user,  
+        ':senha' => $password 
+    ];
+    //$var um array associativo que mapeia os campos `:usuario` e `:senha` para os valores das variáveis `$user` e `$password`.
+
+    $preparo->execute($var); 
+    //Executa a instrução preparada, substituindo os placeholders pelos valores do array `$var`.
+
+}
+catch (PDOException $erro){ 
+    echo "Erro no Sistema" . $erro->getMessage(); //
+}
+//Fecha o bloco try e inicia o bloco catch, que captura exceções do tipo PDOException. 
+Se ocorrer um erro ao tentar conectar ao banco de dados ou executar, 
+uma mensagem de erro será exibida, no echo,  incluindo a mensagem de erro específica (`$erro->getMessage()`).
