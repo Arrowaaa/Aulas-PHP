@@ -1,0 +1,30 @@
+.titulo{
+    text-align: center;
+}
+.tela{
+    text-align: center;
+}
+
+.fundo {
+    min-height: 100vh;
+    background: rgb(101, 169, 249);
+    background: linear-gradient(180deg, rgba(101, 169, 249, 1) 0%, rgba(29, 110, 152, 1) 15%, rgba(0, 159, 191, 1) 56%, rgba(221, 240, 246, 1) 100%);
+    background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+
+
+.fundo-cinza {
+    background-color: #f8f8f8;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.avatar {
+    border: 0.3rem solid rgba(#fff, 0.3);
+    margin-top: -6rem;
+    margin-bottom: 1rem;
+    max-width: 9rem;
+}
+
