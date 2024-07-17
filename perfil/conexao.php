@@ -1,6 +1,6 @@
 <?php 
 $servidor = '127.0.0.1';
-$banco = 'bd_perfil';
+$banco = 'db_perfil';
 $usuariobd = 'root';
 $senhabd = '';
 

@@ -23,7 +23,7 @@
           <?php
           if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] !== "") {
             ?>
-            <img  class="rounded-circle" height="60" src="img/<?php echo $_SESSION['fotoPerfilLogado']; ?>">  
+            <img  class="rounded-circle" height="80" src="img/<?php echo $_SESSION['fotoPerfilLogado']; ?>">  
             
             <?php
             echo $_SESSION["usuario"]; 
