@@ -6,7 +6,7 @@
     <a class="navbar-brand" href="#">Página de Perfil de Perssonagens de Filmes</a>
 
 
-    <form class="d-flex mt-3" role="search" action="validar.php" method="post">
+    <form class="d-flex mt-3" role="search" action="index.php" method="post">
       <input class="form-control me-2" name="buscar" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-success" type="submit">Buscar</button>
     </form>
@@ -61,13 +61,14 @@
           </li>
 
           <?php
-          if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] !== "") {
+          if (isset($_SESSION["Nivel"]) && $_SESSION["Nivel"] !== "base") {
           ?>
             <li class="nav-item">
               <a class="nav-link" href="#">Cadastrar Perfil</a>
             </li>
           <?php
-          } ?>
+          } 
+          ?>
 
           <li class="nav-item">
             <?php

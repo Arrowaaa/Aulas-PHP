@@ -18,9 +18,19 @@
       <div class="row pt-5">
         <?php
         include "conexao.php";
-        $sqlBusca = "SELECT * FROM t_perfil ORDER BY RAND()";
-        $todosPerfil = mysqli_query($conexao, $sqlBusca);
-        while ($umPerfil = mysqli_fetch_assoc($todosPerfil)) {
+        if(empty($_POST['buscar'])){
+          $buscar = "";
+        }else {
+          $buscar = $_POST['buscar'];
+        }
+
+        $consulta = $conexao->prepare("SELECT * FROM t_perfil WHERE nome Like ? OR profissao Like ? OR descricao Like ? ");
+        $buscaComCuringa = "%".$buscar."%";
+        $consulta->bind_param("sss",$buscaComCuringa,$buscaComCuringa,$buscaComCuringa);
+        $consulta->execute();
+        $result = $consulta->get_result();
+
+        while ($umPerfil = $result->fetch_assoc()) {
         ?>
 
           <div class="col-12 col-sm-8 col-md-6 col-lg-3 mt-5">

@@ -17,6 +17,9 @@ if($dados->num_rows >0){
     $foto = $linha['foto'];
     $_SESSION["fotoPerfilLogado"] = $foto;
 
+    $nivel = $linha['nivel'];
+    $_SESSION["Nivel"] = $nivel;
+
     header('Location: index.php');
 }else{
     include_once "mensagens.php";
