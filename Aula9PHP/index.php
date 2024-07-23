@@ -10,12 +10,13 @@
 
 <body>
     <h1 style="display: flex; justify-content: center;">Usuários</h1>
-    <a style="display: flex; justify-content: center;" hrf='form.php st'>Novo usuário</a><br>
+    <a style="display: flex; justify-content: center;" hrf='form.php st'>Tabela de usuários</a><br>
     <main name="tabela" id="tabela">
         <table border="1">
             <tr>
                 <th>Nome</th>
                 <th>Foto</th>
+                <th>Ações</th>
             </tr>
             <tr>
                 <?php
@@ -26,6 +27,7 @@
                     echo "<tr>";
                     echo "<td>". $dados['nome'] . "</td>";
                     echo "<td><img src='" . $dados['foto'] . "' width=100> </td>";
+                    echo "<td><a href='form-editar.php?id=". $dados['id'] . "'>Editar</a></td>";
                     echo "</tr>";
                 }
                 ?>
